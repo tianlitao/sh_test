@@ -1,0 +1,1739 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0026)http://10.212.139.83:4000/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>sh测试站</title>
+    <meta content="神华采购电子商务平台" name="description">
+    <meta content="神华采购电子商务平台" name="keywords">
+      <link rel="stylesheet" media="screen" href="./sh测试站_files/application-cccf58d5c15f37cb19948c59d63d5125.css">
+
+      <script src="./sh测试站_files/jquery.min.js"></script>
+      <script src="./sh测试站_files/application-f510dc31ee974b6759e34fbc20dee545.js"></script><link rel="stylesheet" href1="./sh测试站_files/layer-3a4f2ad2153ddef4db83b1a97a3e75b6.css" id="layui_layer_layercss">
+
+      <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="bsHtwoK8lfesYSIhb/PkxBfNAOYFrNaDB//vufiLJ/NWOBYl9YfaQDPcYf2RzeQiBhNd28+tj2JghPW7UtTMFQ==">
+  </head>
+
+  <body>
+      <!--头部代码-->
+      <div class="head_top">
+  <div class="head_top_main">
+  <span>你好，欢迎来到sh测试站</span>
+    <!-- ajax获取登录信息 -->
+    <div id="session_info" class="key"><span><a href1="http://10.212.139.83:4000/ancient/set_user.html?current_type=0">我的采购</a></span>
+<span><a href1="http://10.212.139.83:4000/ancient/set_user.html?current_type=1">我的销售</a></span>
+<span><a href1="http://10.212.139.83:4000/ancient/set_user.html?menu=10085">会员中心</a> |</span>
+<span class="myshopcard"><a href1="http://10.212.139.83:4000/users/sign_in.html">登录</a><i></i></span>
+<span class="myshopcard"><a href1="http://10.212.139.83:4000/users/sign_up.html">注册</a><i></i></span>
+<span><a href1="javascript:void(0);">用户中心</a></span>|
+<span><a href1="javascript:void(0);">帮助中心</a></span>
+</div>
+  </div>
+</div>
+
+<div class="head_mid">
+  <div class="logo"><a href1="http://10.212.139.83:4000/#"></a></div>
+  <div class="search">
+    <form style="display: inline;float:right;" id="search_form" action="http://10.212.139.83:4000/search.html" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓" maxlength="200">
+      <input type="hidden" name="o" id="o" value="" maxlength="200">
+      <i class="search_p"></i>
+      <span class="twitter-typeahead" style="position: relative; display: inline-block;"><input type="text" class="search_text tt-hint" readonly="" autocomplete="off" spellcheck="false" tabindex="-1" dir="ltr" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: url(&quot;http://10.212.139.83:4000/assets/search.png&quot;) 10px 10px / auto no-repeat scroll padding-box border-box rgba(0, 0, 0, 0);" maxlength="200"><input type="text" name="k" id="k" class="search_text tt-input" placeholder="请输入关键字" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;" maxlength="200"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Microsoft YaHei&quot;; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div class="tt-dataset tt-dataset-best-pictures"></div></div></span>
+      <input type="submit" name="commit" value="搜商品" class="search_btn" onclick="search(&quot;products&quot;)" maxlength="200">
+      <input type="submit" name="commit" value="搜供应商" class="search_btn" onclick="search(&quot;departments&quot;)" maxlength="200">
+</form>    <div class="hot">
+      热门搜索：
+        <a href1="http://10.212.139.83:4000/search.html?k=%E8%AE%A1%E7%AE%97%E6%9C%BA">计算机</a>
+        <a href1="http://10.212.139.83:4000/search.html?k=%E6%89%93%E5%8D%B0%E6%9C%BA">打印机</a>
+        <a href1="http://10.212.139.83:4000/search.html?k=%E7%A9%BA%E8%B0%83">空调</a>
+        <a href1="http://10.212.139.83:4000/search.html?k=%E7%AC%94%E8%AE%B0%E6%9C%AC">笔记本</a>
+    </div>
+  </div>
+  <div class="goto_car">
+    <a href1="http://10.212.139.83:4000/cart">我的购物车 <b>0</b></a>
+  </div>
+</div>
+
+<script type="text/javascript">
+  if (!$.browser.msie || ($.browser.msie && $.browser.version > 8) ){
+    var bestPictures = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      remote: {
+        url: '/mall_products/autocomplete?query=%QUERY',
+        wildcard: '%QUERY'
+      }
+    });
+
+    $('#k').typeahead(null, {
+      name: 'best-pictures',
+      display: 'value',
+      source: bestPictures
+    });
+  }
+  function search(type){
+    if(type == 'departments'){
+      $('#search_form').attr('action','/emalls')
+    }
+    return true;
+  }
+</script>
+      <!-- 采购品目导航 -->
+      <!--导航代码开始-->
+<div class="nav">
+  <div class="nav_main">
+    <!-- <div class="left_nav_bg"></div> -->
+    <div class="left_nav" id="left_nav_menu">
+      <h1>全部商品分类</h1>
+    </div>
+      <div class="all-goods">
+  <div class="item dnbgcs png_item">
+    <div class="product">
+      <h3>
+        <span class=""><a href1="http://10.212.139.83:4000/channel/10001.html">电脑办公测试</a></span>
+      </h3>
+    </div>
+      <div class="product-wrap posone" style="display: none;">
+        <div class="cf">
+            <div class="pro_box">
+              <span class="pro_two">办公设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10023.html">考勤机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10022.html">碎纸机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10024.html">投影仪</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">计算机 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10006.html">便携式计算机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10007.html">台式计算机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10008.html">触控一体机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10009.html">PC服务器</a></span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  <div class="item gjgjhchj png_item">
+    <div class="product">
+      <h3>
+        <span class=""><a href1="http://10.212.139.83:4000/channel/10025.html">工具 、工具耗材 、焊接</a></span>
+      </h3>
+    </div>
+      <div class="product-wrap posone" style="display: none;">
+        <div class="cf">
+            <div class="pro_box">
+              <span class="pro_two">工具套装 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10060.html">手用丝锥</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10061.html">OSG 直槽螺纹丝锥</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10062.html">伯爵 直槽丝锥</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10063.html">三面刃铣刀</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">螺丝刀 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10068.html">螺丝刀</a></span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  <div class="item dq png_item">
+    <div class="product">
+      <h3>
+        <span class=""><a href1="http://10.212.139.83:4000/channel/10046.html">电器</a></span>
+      </h3>
+    </div>
+      <div class="product-wrap posone" style="display: none;">
+        <div class="cf">
+            <div class="pro_box">
+              <span class="pro_two">厨房电器 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10064.html">洗碗机用清洁剂</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10065.html">圆柱形铣刀</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10066.html">三菱铣刀片</a></span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  <div class="item jscljzp png_item" style="background-position: 0px 0%;">
+    <div class="product">
+      <h3>
+        <span class=""><a href1="http://10.212.139.83:4000/channel/11192.html">金属材料及制品</a></span>
+      </h3>
+    </div>
+      <div class="product-wrap posone" style="display: none;">
+        <div class="cf">
+            <div class="pro_box">
+              <span class="pro_two">金属防护、支护用品 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10098.html">U型支架卡缆</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10099.html">金属顶梁</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10100.html">金属网</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10102.html">单体支柱</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10103.html">锚杆</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10104.html">金属防护、支护用品附件及配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10097.html">巷道金属支架</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10101.html">矿用锚索</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">有色金属材料及制品 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10105.html">铜粉</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10106.html">铜条</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10108.html">铜丝</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10111.html">铜箔</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10114.html">铝粉</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10116.html">铝棒</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10118.html">铝板/片</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10121.html">铝管</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10122.html">锌管</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10124.html">易熔合金</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10126.html">其他有色金属材料及制品</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10109.html">铜板/片</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10112.html">铜管</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10115.html">铝条</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10117.html">铝丝</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10120.html">铝箔</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10123.html">锌板</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10125.html">硬质合金</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10107.html">铜棒</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10113.html">铝锭</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10119.html">铝带</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10110.html">铜带</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">紧固件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10127.html">螺栓</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10128.html">螺柱</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10131.html">销</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10132.html">键</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10135.html">铆钉</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10130.html">螺钉</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10134.html">挡圈</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10129.html">螺母</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10133.html">垫圈</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">焊接材料 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10136.html">焊条</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10137.html">其他焊接材料</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">黑色金属材料及制品 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10139.html">铁合金</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10141.html">介质粉</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10142.html">铸铁毛坯件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10144.html">钢丝</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10147.html">绞股线</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10148.html">吊索</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10150.html">钢球</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10151.html">钢制模板</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10154.html">钢板桩</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10156.html">蝶簧</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10157.html">锚</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10160.html">金属扣件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10161.html">金属包装物</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10163.html">其他黑色金属材料及制品</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10138.html">生铁</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10140.html">钢锭</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10143.html">铁线</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10146.html">重要用途钢丝绳</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10149.html">钢格栅板</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10152.html">金属桶</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10155.html">弹簧</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10158.html">锚链</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10145.html">普通钢丝绳</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10153.html">金属槽</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10159.html">脚手架</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10162.html">煤矿专用道岔及附件</a></span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  <div class="item mkzysbjpj png_item" style="background-position: 0px 0%;">
+    <div class="product">
+      <h3>
+        <span class=""><a href1="http://10.212.139.83:4000/channel/11184.html">煤矿专用设备及配件</a></span>
+      </h3>
+    </div>
+      <div class="product-wrap posone" style="display: none;">
+        <div class="cf">
+            <div class="pro_box">
+              <span class="pro_two">提升设备配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10785.html">回柱绞车配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10788.html">箕斗配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10789.html">罐笼配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10790.html">摇台配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10791.html">天轮配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10793.html">提升设备通用配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10784.html">调度绞车配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10786.html">风门绞车配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10787.html">矿井提升机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10792.html">其它矿用绞车配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">运输设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10855.html">自移机尾</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10856.html">大型自卸卡车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10842.html">井下刮板输送机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10845.html">连续牵引车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10846.html">蓄电池运煤车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10848.html">蓄电池铲车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10850.html">矿车及其辅助运输装置</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10851.html">井下防爆无轨胶轮车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10853.html">桥式运输机(连续运煤系统)</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10843.html">井下转载机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10847.html">梭式运煤车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10852.html">支架搬运车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10854.html">转载破碎机(给料破碎机)</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10844.html">井下破碎机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10849.html">矿用蓄电池电机车</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">装载排土设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10858.html">装岩机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10859.html">振动放矿机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10857.html">装运机</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">钻探设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10860.html">牙轮钻机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10862.html">锚杆钻机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10863.html">凿岩钻车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10861.html">潜孔钻机</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">采掘设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10864.html">采煤机（改）</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10865.html">刨煤机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10866.html">连续采煤机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10867.html">掘进机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10868.html">掘锚机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10869.html">液压支架</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10870.html">乳化液泵站</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10871.html">喷雾泵站</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10873.html">液压单斗挖掘机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10874.html">斗轮挖掘机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10876.html">清水过滤站</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10872.html">机械式单斗挖掘机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10875.html">步行式索斗(拉铲)挖掘机</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">运输设备配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10794.html">井下刮板输送机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10795.html">井下转载机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10796.html">井下破碎机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10798.html">蓄电池运煤车配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10799.html">梭式运煤车配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10800.html">蓄电池铲车配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10802.html">矿车及其辅助运输装置配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10803.html">井下防爆无轨胶轮车配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10804.html">支架搬运车配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10805.html">桥式运输机(连续运煤系统)配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10807.html">自移机尾配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10808.html">大型自卸卡车配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10809.html">运输设备通用配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10797.html">连续牵引车配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10801.html">矿用蓄电池电机车配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10806.html">转载破碎机(给料破碎机)配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">装载排土设备配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10810.html">装运机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10811.html">装岩机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10813.html">装载排土设备通用配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10812.html">振动放矿机配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">钻探设备配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10814.html">牙轮钻机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10815.html">潜孔钻机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10817.html">锚杆钻机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10818.html">钻探设备通用配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10816.html">凿岩钻车配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">采掘设备配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10820.html">刨煤机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10821.html">连续采煤机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10823.html">掘锚机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10825.html">液压支架电液控制阀</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10827.html">喷雾泵站配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10828.html">机械式单斗挖掘机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10831.html">步行式索斗(拉铲)挖掘机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10832.html">采掘设备通用配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10822.html">掘进机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10826.html">乳化液泵站配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10830.html">斗轮挖掘机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10819.html">采煤机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10824.html">液压支架配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10829.html">液压单斗挖掘机配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">提升设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10834.html">回柱绞车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10836.html">矿井提升机(系统)</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10837.html">箕斗</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10840.html">天轮</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10841.html">其它矿用绞车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10835.html">风门绞车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10839.html">摇台</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10833.html">调度绞车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10838.html">罐笼</a></span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  <div class="item gc png_item">
+    <div class="product">
+      <h3>
+        <span class=""><a href1="http://10.212.139.83:4000/channel/11182.html">钢材</a></span>
+      </h3>
+    </div>
+      <div class="product-wrap posone" style="display: none;">
+        <div class="cf">
+            <div class="pro_box">
+              <span class="pro_two">管材 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10926.html">无缝钢管</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10927.html">焊接钢管</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10928.html">铸铁管</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10929.html">异型钢管</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">板材 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10930.html">钢板</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10931.html">钢带</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">线材 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10932.html">盘条</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">型钢 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10933.html">工字钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10934.html">H型钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10935.html">U型钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10937.html">C型钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10938.html">槽钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10939.html">角钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10940.html">六角钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10942.html">口字钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10943.html">异型钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10944.html">圆钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10945.html">方钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10946.html">扁钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10948.html">半圆钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10949.html">半椭圆钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10950.html">矿工钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10936.html">T型钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10941.html">球扁钢</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10947.html">弹簧扁钢</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">轨道用钢 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10952.html">轻轨</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10953.html">起重机轨和升降机轨</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10951.html">重轨</a></span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  <div class="item hyzysbjpj png_item">
+    <div class="product">
+      <h3>
+        <span class=""><a href1="http://10.212.139.83:4000/channel/11179.html">航运专用设备及配件</a></span>
+      </h3>
+    </div>
+      <div class="product-wrap posone" style="display: none;">
+        <div class="cf">
+            <div class="pro_box">
+              <span class="pro_two">航运设备配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/11076.html">轮机设备配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11077.html">船舶电气设备配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11075.html">船体设备配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">航运设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/11078.html">船体设备</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11079.html">轮机设备</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11080.html">船舶电气设备</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">运输船 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/11081.html">散货船</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11083.html">油船</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11084.html">液化气船</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11086.html">集装箱船</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11087.html">滚装船</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11082.html">客船</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11085.html">冷藏船</a></span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  <div class="item gkzysbjpj png_item">
+    <div class="product">
+      <h3>
+        <span class=""><a href1="http://10.212.139.83:4000/channel/11178.html">港口专用设备及配件</a></span>
+      </h3>
+    </div>
+      <div class="product-wrap posone" style="display: none;">
+        <div class="cf">
+            <div class="pro_box">
+              <span class="pro_two">杂货装卸设备配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/11088.html">港口门座式起重机配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">煤炭装卸设备配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/11089.html">转筒式翻车机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11090.html">港口卸车机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11091.html">港口堆料机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11093.html">港口堆取料机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11094.html">港口装船机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11095.html">港口卸船机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11092.html">港口取料机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11096.html">煤炭装卸设备通用配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">水上设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/11097.html">挖泥船</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11099.html">引水船</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11100.html">交通船</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11098.html">拖船</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11101.html">测量船</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">杂货装卸设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/11102.html">港口门座式起重机</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">煤炭装卸设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/11103.html">转筒式翻车机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11105.html">港口堆料机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11106.html">港口取料机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11107.html">港口堆取料机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11109.html">港口卸船机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11104.html">港口卸车机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11108.html">港口装船机</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">水上设备配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/11112.html">挖泥船配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11113.html">拖船配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11115.html">交通船配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11116.html">测量船配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11119.html">潜水装置</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11120.html">水下作业设备</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11110.html">海上环保装置</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11114.html">引水船配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11118.html">航标器材</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11111.html">海上浮体结构</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11117.html">水上设备通用配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11121.html">救捞器具</a></span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  <div class="item jtyssbjpj png_item">
+    <div class="product">
+      <h3>
+        <span class=""><a href1="http://10.212.139.83:4000/channel/11201.html">交通运输设备及配件</a></span>
+      </h3>
+    </div>
+      <div class="product-wrap posone" style="display: none;">
+        <div class="cf">
+            <div class="pro_box">
+              <span class="pro_two">其他交通运输设备及配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/11995.html">人力车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11993.html">电瓶车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11994.html">电瓶车配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11996.html">人力车配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">特种车辆配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/11997.html">一般特种车辆配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11998.html">工矿特种车辆配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">公路运输车辆配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/12000.html">汽车底盘配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11999.html">发动机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/12001.html">汽车车身配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">特种车辆 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/12002.html">一般特种车辆</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/12003.html">工矿特种车辆</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">公路运输车辆 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/12004.html">公路货车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/12005.html">公路客车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/12007.html">越野汽车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/12009.html">农用车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/12006.html">轿车</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/12008.html">摩托车</a></span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  <div class="item ssd png_item">
+    <div class="product">
+      <h3>
+        <span class=""><a href1="http://10.212.139.83:4000/channel/11188.html">输送带</a></span>
+      </h3>
+    </div>
+      <div class="product-wrap posone" style="display: none;">
+        <div class="cf">
+            <div class="pro_box">
+              <span class="pro_two">输送带附件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10359.html">穿条</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10358.html">皮带扣</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">异型输送带 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10360.html">各种异型输送带</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">金属材料抗拉层输送带 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10362.html">钢缆牵引输送带</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10363.html">折叠式输送带</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10361.html">钢丝绳芯输送带</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">纤维材料抗拉层输送带 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10366.html">聚酯输送带</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10367.html">PVC输送带</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10365.html">尼龙输送带</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10368.html">PVG输送带</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10364.html">帆布输送带</a></span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  <div class="item fdzysbjpj png_item">
+    <div class="product">
+      <h3>
+        <span class=""><a href1="http://10.212.139.83:4000/channel/11185.html">发电专用设备及配件</a></span>
+      </h3>
+    </div>
+      <div class="product-wrap posone" style="display: none;">
+        <div class="cf">
+            <div class="pro_box">
+              <span class="pro_two">光伏发电设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10717.html">光伏方阵支架系统</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10715.html">光伏组件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10716.html">光伏并网逆变器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11128.html">光伏汇流设备</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11129.html">光伏环境监测系统</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">风力发电设备配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10718.html">风电机组发电机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10720.html">风机轮毂配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10721.html">风电机组变流器配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10722.html">风机机组塔筒配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10723.html">风电机组变桨系统配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10725.html">风电机组偏航系统配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10726.html">风电机组主控系统配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10719.html">风电机组叶片配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10724.html">风电机组传动系统配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11127.html">其他风电设备配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">风力发电设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10727.html">风电机组</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10728.html">风电发电机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10729.html">风电叶片</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10731.html">风电机组齿轮箱</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10732.html">风电机组变流器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10733.html">风电机组塔筒</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10735.html">风电机组偏航系统</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10736.html">风电机组主控系统</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10730.html">风电轮毂</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10734.html">风电机组变桨系统</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">发变电设备配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10737.html">发电机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10738.html">励磁设备配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10739.html">发电辅助设备配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">发变电设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10741.html">励磁机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10742.html">发电机励磁设备</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10745.html">发、变组保护设备</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10744.html">发电机出口断路器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10743.html">主变压器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10740.html">汽轮发电机</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">汽机及辅助设备配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10747.html">汽机辅助设备配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10746.html">汽机本体设备配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">汽机及辅助设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10750.html">凝汽器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10752.html">抽气器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10753.html">疏水扩容器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10756.html">EH供油装置</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10757.html">汽轮机盘车装置</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10758.html">发电机定子冷却水装置</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10751.html">高低压加热器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10755.html">密封油装置</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10759.html">汽机调速设备</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10749.html">油系统设备</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10754.html">轴封加热器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10748.html">电站汽轮机</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">电站锅炉及辅助设备配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10760.html">电站锅炉设备配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10761.html">电站锅炉辅助设备配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">电站锅炉及辅助设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10763.html">再热器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10766.html">空气预热器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10768.html">点火装置</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10771.html">水冷壁</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10772.html">联箱及联络管道</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10774.html">电站锅炉减温减压器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10776.html">吹灰系统设备</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10778.html">旋风分离器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10779.html">烟风管道系统设备</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10780.html">定联排污扩容器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10783.html">暖风器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10765.html">省煤器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10767.html">燃烧器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10770.html">汽水分离器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10773.html">电站锅炉给煤机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10777.html">电站锅炉返料装置设备</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10781.html">疏/给水箱</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10764.html">过热器</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10769.html">汽包</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10775.html">电站锅炉给粉机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10782.html">启动锅炉</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10762.html">电站锅炉</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">光伏发电设备配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/10712.html">光伏组件配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10714.html">光伏方阵支架系统配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11130.html">光伏汇流设备配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11132.html">其他光伏发电设备配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11131.html">光伏环境监测系统配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/10713.html">光伏并网逆变器配件</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">水能发电设备 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/11134.html">水轮机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11136.html">启闭机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11135.html">水轮发电机</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11137.html">其他水能发电设备</a></span>
+              </div>
+            </div>
+            <div class="pro_box">
+              <span class="pro_two">水能发电设备配件 &gt;</span>
+              <div class="pro_three">
+                  <span><a href1="http://10.212.139.83:4000/channel/11139.html">水轮机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11141.html">启闭机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11140.html">水轮发电机配件</a></span>
+                  <span><a href1="http://10.212.139.83:4000/channel/11142.html">其他水能发电设备配件</a></span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+    <div id="jsddm" class="jsddm">
+      <li class="jsddmli"><a href1="http://10.212.139.83:4000/" class="other">首 页</a></li>
+          <li class="jsddmli"><a href1="http://10.212.139.83:4000/articles?category_id=10084">团购活动</a></li>
+<li class="jsddmli"><a href1="http://10.212.139.83:4000/articles?category_id=10085">抢购专区</a></li>
+<li class="jsddmli"><a href1="http://10.212.139.83:4000/articles?category_id=10086">询价专区</a></li>
+<li class="jsddmli"><a href1="http://10.212.139.83:4000/articles?category_id=10087">竞价专区</a></li>
+<li class="jsddmli"><a href1="http://10.212.139.83:4000/articles/tender">招标公告</a></li>
+    </div>
+  </div>
+
+</div>
+<!--导航代码结束-->
+
+      <!--消息-->
+
+
+   <script type="text/javascript">
+      $(document).ready(function(){
+        $('.ui-dialog-grid').fadeOut(3000);
+      });
+    </script>
+
+    <!-- 滚动图 -->
+<div id="full-screen-slider">
+  <ul id="slides">
+                    <li style="background: url(&quot;./sh测试站_files/5886e6ab4b3b7b71ad112e56ef65ed66.jpg&quot;) center top no-repeat scroll; z-index: 1; display: none;">
+                      <a href1="http://www.shenhuagroup.com.cn/shjtww/1382688405630/aqsc.shtml"></a>
+                    </li>
+                    <li style="background: url(&quot;./sh测试站_files/0ccf99425c0138813825ec5a2a0e50e2.jpg&quot;) center top no-repeat scroll; z-index: 1; display: list-item;">
+                      <a href1="http://www.shenhuagroup.com.cn/shjtww/1382688457521/yfgs.shtml"></a>
+                    </li>
+  </ul>
+    <!-- 新闻 -->
+  <div class="slider_r">
+    <!--登录开始-->
+    <div class="sign">
+      <div class="sign_main">
+      <p>Hi,欢迎来到神华！</p>
+<!--       <input type="button" value="登录" class="sigin_in"/>
+      <input type="button" value="注册" class="register"/> -->
+      <span class="sigin_in_d"><a href1="http://10.212.139.83:4000/users/sign_in.html">登录</a><i></i></span>
+      <span class="register_d"><a href1="http://10.212.139.83:4000/users/sign_up.html">注册</a><i></i></span>
+
+    </div>
+    </div>
+    <!--登录结束-->
+    <!--平台公告开始-->
+    <div class="news">
+      <div class="news_title">
+        平台公告
+        <span class="new_more"><a href1="http://10.212.139.83:4000/articles.html?category_id=10083">更多&gt;&gt;</a></span>
+        <!-- <a class="new_more" href1="javascript:void()0;">更多>></a> -->
+      </div>
+
+      <ul class="new_main">
+          <li><a href1="http://10.212.139.83:4000/articles/10183.html?category_id=10083"></a></li>
+          <li><a href1="http://10.212.139.83:4000/articles/10148.html?category_id=10083">经济日报：大胆“放权”，决...</a></li>
+          <li><a href1="http://10.212.139.83:4000/articles/10160.html?category_id=10083"></a></li>
+          <li><a href1="http://10.212.139.83:4000/articles/10161.html?category_id=10083"></a></li>
+      </ul>
+    </div>
+    <!--平台公告结束-->
+    <div class="purchaser_btn sign_btns">
+       <a href1="http://10.212.139.83:4000/ancient/set_user.html?current_type=0">我是采购人</a>
+    </div>
+    <div class="supplier_btn sign_btns">
+       <a href1="http://10.212.139.83:4000/ancient/set_user.html?current_type=1">我是供应商</a>
+    </div>
+  </div>
+
+
+
+
+  <div style="clear:both;"></div>
+  <!-- <div style="clear:both;"></div> -->
+  <!-- 统计 -->
+</div>
+
+<div class="wrapper">
+  <div></div>
+  <div></div>
+  <div>  <!--热销推荐开始-->
+<div class="content_c">
+  <div class="ng_scope">
+    <div class="recommend_left"><img width="221" height="372" src="./sh测试站_files/hot_sale-da66abccfb48e8ca5ef96592071835a0.jpg" alt="Hot sale"></div>
+    <div class="recommend_right section-focus-pic" id="section-focus-pic">
+    <div>
+      <div class="ehsy_content pages" data-scro="list" id="content">
+        <div id="content_list" style="left: 0px;">
+        <ul class="ehsy_ul">
+            <li class="ehsy_li item" style="left:0px">
+
+                  <div class="recommend_div">
+                    <div class="recommend_img">
+                        <a href1="http://10.212.139.83:4000/mall_products/10247.html"><img class="mod_recommend_img" alt="" src="./sh测试站_files/d87a40ae6d4ec781eee82ad1754db6c5.jpg"></a>
+                    </div>
+                    <a class="product_name" href1="http://10.212.139.83:4000/mall_products/10247.html">3M 9041有机蒸气异味及颗粒物口罩，耳带式，25个/盒</a>
+                    <p class="product_num">
+                      <span>订货号：10000060</span>
+                      <span class="fr">
+                          <span class="ng_binding">库存：</span>
+                          <span class="ng_binding">库存200</span>
+                      </span>
+                    </p>
+                    <p class="product_money product_num">
+                      <span class="recommend_price fl">
+                        <span>神华价：</span>
+                        <span class="now_money">¥500.00</span>
+                      </span>
+                    </p>
+                    <a href1="http://10.212.139.83:4000/cart/change/10247?num=1" class="sprite_ico_cart"></a>
+                  </div>
+
+              <ul class="recommend_r fl">
+                    <li class="recommend_box">
+                      <div class="recommend_r_img">
+                          <a href1="http://10.212.139.83:4000/mall_products/10246.html"><img src="./sh测试站_files/d87a40ae6d4ec781eee82ad1754db6c5.jpg" alt="D87a40ae6d4ec781eee82ad1754db6c5"></a>
+                      </div>
+                      <div class="recommend_main">
+                        <a class="product_name" href1="http://10.212.139.83:4000/mall_products/10246.html">3M 9041有机蒸气异味及颗粒物口罩，耳带式，25个/盒</a>
+                        <p class="product_num">
+                          <span>订货号：10000060</span>
+                        </p>
+                        <p class="product_num main_num">
+                          <span class="clear">
+                            <span class="ng_binding">库存：</span>
+                            <span class="ng_binding"> 库存100</span>
+                          </span>
+                        </p>
+                        <p class="product_money product_num">
+                          <span class="recommend_price fl">
+                            <span>神华价：</span>
+                            <span class="now_money">¥300.00</span>
+                          </span>
+                        </p>
+                        <a href1="http://10.212.139.83:4000/cart/change/10246?num=1" class="sprite_ico_cart"></a>
+                      </div>
+                    </li>
+                    <li class="recommend_box">
+                      <div class="recommend_r_img">
+                          <a href1="http://10.212.139.83:4000/mall_products/10245.html"><img src="./sh测试站_files/d87a40ae6d4ec781eee82ad1754db6c5.jpg" alt="D87a40ae6d4ec781eee82ad1754db6c5"></a>
+                      </div>
+                      <div class="recommend_main">
+                        <a class="product_name" href1="http://10.212.139.83:4000/mall_products/10245.html">3M 9041有机蒸气异味及颗粒物口罩，耳带式，25个/盒</a>
+                        <p class="product_num">
+                          <span>订货号：10000060</span>
+                        </p>
+                        <p class="product_num main_num">
+                          <span class="clear">
+                            <span class="ng_binding">库存：</span>
+                            <span class="ng_binding"> 库存0</span>
+                          </span>
+                        </p>
+                        <p class="product_money product_num">
+                          <span class="recommend_price fl">
+                            <span>神华价：</span>
+                            <span class="now_money">¥0.00</span>
+                          </span>
+                        </p>
+                        <a href1="http://10.212.139.83:4000/cart/change/10245?num=1" class="sprite_ico_cart"></a>
+                      </div>
+                    </li>
+                    <li class="recommend_box">
+                      <div class="recommend_r_img">
+                          <a href1="http://10.212.139.83:4000/mall_products/10244.html"><img src="./sh测试站_files/d87a40ae6d4ec781eee82ad1754db6c5.jpg" alt="D87a40ae6d4ec781eee82ad1754db6c5"></a>
+                      </div>
+                      <div class="recommend_main">
+                        <a class="product_name" href1="http://10.212.139.83:4000/mall_products/10244.html">3M 9041有机蒸气异味及颗粒物口罩，耳带式，25个/盒</a>
+                        <p class="product_num">
+                          <span>订货号：10000060</span>
+                        </p>
+                        <p class="product_num main_num">
+                          <span class="clear">
+                            <span class="ng_binding">库存：</span>
+                            <span class="ng_binding"> 库存1000</span>
+                          </span>
+                        </p>
+                        <p class="product_money product_num">
+                          <span class="recommend_price fl">
+                            <span>神华价：</span>
+                            <span class="now_money">¥1,200.00</span>
+                          </span>
+                        </p>
+                        <a href1="http://10.212.139.83:4000/cart/change/10244?num=1" class="sprite_ico_cart"></a>
+                      </div>
+                    </li>
+                    <li class="recommend_box">
+                      <div class="recommend_r_img">
+                          <a href1="http://10.212.139.83:4000/mall_products/10243.html"><img src="./sh测试站_files/d87a40ae6d4ec781eee82ad1754db6c5.jpg" alt="D87a40ae6d4ec781eee82ad1754db6c5"></a>
+                      </div>
+                      <div class="recommend_main">
+                        <a class="product_name" href1="http://10.212.139.83:4000/mall_products/10243.html">3M 9041有机蒸气异味及颗粒物口罩，耳带式，25个/盒</a>
+                        <p class="product_num">
+                          <span>订货号：10000060</span>
+                        </p>
+                        <p class="product_num main_num">
+                          <span class="clear">
+                            <span class="ng_binding">库存：</span>
+                            <span class="ng_binding"> 库存100</span>
+                          </span>
+                        </p>
+                        <p class="product_money product_num">
+                          <span class="recommend_price fl">
+                            <span>神华价：</span>
+                            <span class="now_money">¥200.00</span>
+                          </span>
+                        </p>
+                        <a href1="http://10.212.139.83:4000/cart/change/10243?num=1" class="sprite_ico_cart"></a>
+                      </div>
+                    </li>
+              </ul>
+            </li>
+
+            <li class="ehsy_li item" style="left:970px">
+
+                  <div class="recommend_div">
+                    <div class="recommend_img">
+                        <a href1="http://10.212.139.83:4000/mall_products/10242.html"><img class="mod_recommend_img" alt="" src="./sh测试站_files/d87a40ae6d4ec781eee82ad1754db6c5.jpg"></a>
+                    </div>
+                    <a class="product_name" href1="http://10.212.139.83:4000/mall_products/10242.html">3M 9041有机蒸气异味及颗粒物口罩，耳带式，25个/盒</a>
+                    <p class="product_num">
+                      <span>订货号：10000060</span>
+                      <span class="fr">
+                          <span class="ng_binding">库存：</span>
+                          <span class="ng_binding">库存500</span>
+                      </span>
+                    </p>
+                    <p class="product_money product_num">
+                      <span class="recommend_price fl">
+                        <span>神华价：</span>
+                        <span class="now_money">¥300.00</span>
+                      </span>
+                    </p>
+                    <a href1="http://10.212.139.83:4000/cart/change/10242?num=1" class="sprite_ico_cart"></a>
+                  </div>
+
+              <ul class="recommend_r fl">
+                    <li class="recommend_box">
+                      <div class="recommend_r_img">
+                          <a href1="http://10.212.139.83:4000/mall_products/10241.html"><img src="./sh测试站_files/d87a40ae6d4ec781eee82ad1754db6c5.jpg" alt="D87a40ae6d4ec781eee82ad1754db6c5"></a>
+                      </div>
+                      <div class="recommend_main">
+                        <a class="product_name" href1="http://10.212.139.83:4000/mall_products/10241.html">3M 9041有机蒸气异味及颗粒物口罩，耳带式，25个/盒</a>
+                        <p class="product_num">
+                          <span>订货号：10000060</span>
+                        </p>
+                        <p class="product_num main_num">
+                          <span class="clear">
+                            <span class="ng_binding">库存：</span>
+                            <span class="ng_binding"> 库存0</span>
+                          </span>
+                        </p>
+                        <p class="product_money product_num">
+                          <span class="recommend_price fl">
+                            <span>神华价：</span>
+                            <span class="now_money">¥0.00</span>
+                          </span>
+                        </p>
+                        <a href1="http://10.212.139.83:4000/cart/change/10241?num=1" class="sprite_ico_cart"></a>
+                      </div>
+                    </li>
+                    <li class="recommend_box">
+                      <div class="recommend_r_img">
+                          <a href1="http://10.212.139.83:4000/mall_products/10240.html"><img src="./sh测试站_files/d87a40ae6d4ec781eee82ad1754db6c5.jpg" alt="D87a40ae6d4ec781eee82ad1754db6c5"></a>
+                      </div>
+                      <div class="recommend_main">
+                        <a class="product_name" href1="http://10.212.139.83:4000/mall_products/10240.html">3M 9041有机蒸气异味及颗粒物口罩，耳带式，25个/盒</a>
+                        <p class="product_num">
+                          <span>订货号：10000060</span>
+                        </p>
+                        <p class="product_num main_num">
+                          <span class="clear">
+                            <span class="ng_binding">库存：</span>
+                            <span class="ng_binding"> 库存40</span>
+                          </span>
+                        </p>
+                        <p class="product_money product_num">
+                          <span class="recommend_price fl">
+                            <span>神华价：</span>
+                            <span class="now_money">¥200.00</span>
+                          </span>
+                        </p>
+                        <a href1="http://10.212.139.83:4000/cart/change/10240?num=1" class="sprite_ico_cart"></a>
+                      </div>
+                    </li>
+                    <li class="recommend_box">
+                      <div class="recommend_r_img">
+                          <a href1="http://10.212.139.83:4000/mall_products/10303.html"><img src="http://10.212.139.83:4000/"></a>
+                      </div>
+                      <div class="recommend_main">
+                        <a class="product_name" href1="http://10.212.139.83:4000/mall_products/10303.html">一字/十字螺丝起子，防滑 6件套</a>
+                        <p class="product_num">
+                          <span>订货号：10000148</span>
+                        </p>
+                        <p class="product_num main_num">
+                          <span class="clear">
+                            <span class="ng_binding">库存：</span>
+                            <span class="ng_binding"> 库存5</span>
+                          </span>
+                        </p>
+                        <p class="product_money product_num">
+                          <span class="recommend_price fl">
+                            <span>神华价：</span>
+                            <span class="now_money">¥8.00</span>
+                          </span>
+                        </p>
+                        <a href1="http://10.212.139.83:4000/cart/change/10303?num=1" class="sprite_ico_cart"></a>
+                      </div>
+                    </li>
+                    <li class="recommend_box">
+                      <div class="recommend_r_img">
+                          <a href1="http://10.212.139.83:4000/mall_products/10272.html"><img src="http://10.212.139.83:4000/"></a>
+                      </div>
+                      <div class="recommend_main">
+                        <a class="product_name" href1="http://10.212.139.83:4000/mall_products/10272.html">星型螺丝刀，T5×60mm</a>
+                        <p class="product_num">
+                          <span>订货号：10000138</span>
+                        </p>
+                        <p class="product_num main_num">
+                          <span class="clear">
+                            <span class="ng_binding">库存：</span>
+                            <span class="ng_binding"> 库存0</span>
+                          </span>
+                        </p>
+                        <p class="product_money product_num">
+                          <span class="recommend_price fl">
+                            <span>神华价：</span>
+                            <span class="now_money">¥0.00</span>
+                          </span>
+                        </p>
+                        <a href1="http://10.212.139.83:4000/cart/change/10272?num=1" class="sprite_ico_cart"></a>
+                      </div>
+                    </li>
+              </ul>
+            </li>
+
+        </ul>
+        </div>
+      </div>
+      <div class="change_box controler2" data-scro="controler2">
+        <a href1="javascript:;" class="prev_hot" onclick="sx();"></a>
+        <a href1="javascript:;" class="next_hot" onclick="ss(&#39;time&#39;);"></a>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    var page = 1;
+    ss("a");
+    function ss(a){
+     var content = $("div#content");
+     var content_list = $("div#content_list");
+     var v_width = content.width();
+     var temp = parseInt("10") ;
+     var page_count = Math.ceil(temp / 5)  ;   //只要不是整数，就往大的方向取最小的整数
+     if( !content_list.is(":animated") ){    //判断“内容展示区域”是否正在处于动画
+       if( page == page_count ){  //已经到最后一个版面了,如果再向后，必须跳转到第一个版面。
+        content_list.animate({ left : '0px'}, "slow"); //通过改变left值，跳转到第一个版面
+        page = 1;
+       }else{
+         if(page <= page_count){
+            content_list.animate({ left : '-='+v_width }, "slow");  //通过改变left值，达到每次换一个版面
+          }
+         if(page > page_count){
+          page = 1;
+         }else{
+          page++;
+        }
+      }
+     }
+     if(a != 'time'){setTimeout("ss('a')", 5000)}
+    }
+
+    function sx(){
+     var content = $("div#content");
+     var content_list = $("div#content_list");
+     var v_width = content.width();
+     var temp = parseInt("10") ;
+     var page_count = Math.ceil(temp / 5)  ;   //只要不是整数，就往大的方向取最小的整数
+
+     if( !content_list.is(":animated") ){    //判断“内容展示区域”是否正在处于动画
+       if( page == 1 ){  //已经到最后一个版面了,如果再向后，必须跳转到第一个版面。
+        var tt = -970 * (page_count - 1) + "px"
+        content_list.animate({ left : tt}, "slow"); //通过改变left值，跳转到第一个版面
+        page = page_count;
+       }else{
+         if(page >= 1){
+            content_list.animate({ left : '+='+v_width }, "slow");  //通过改变left值，达到每次换一个版面
+          }
+         if(page < 1){
+          page = page_count;
+         }else{
+          page--;
+        }
+      }
+     }
+    }
+
+</script></div>
+  <div>  <div class="content_c">
+  <!--品牌中心开始-->
+    <div class="brand_title">
+      品牌中心
+      <a href1="http://10.212.139.83:4000/search.html" class="brand_all" target="_blank">
+        查看全部品牌
+      </a>
+    </div>
+    <div class="brand_main">
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=1">
+            <img width="100" height="40" src="./sh测试站_files/fa53531cf14f28beb5d2b5cb029d5927.jpg" alt="Fa53531cf14f28beb5d2b5cb029d5927">
+            <div class="showname">
+              <span class="show_title">Apple</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10024">
+            <img width="100" height="40" src="./sh测试站_files/80bf2f98fa0ac052c0e01d272a03d6d6.jpg" alt="80bf2f98fa0ac052c0e01d272a03d6d6">
+            <div class="showname">
+              <span class="show_title"> CAMBRO</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10040">
+            <img width="100" height="40" src="./sh测试站_files/0315d9d3f8ad1045cea71dc8fc806098.jpg" alt="0315d9d3f8ad1045cea71dc8fc806098">
+            <div class="showname">
+              <span class="show_title">CAMBRO</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10002">
+            <img width="100" height="40" src="./sh测试站_files/c7b479acc2159c2b8d1f5eb1a3968c72.jpg" alt="C7b479acc2159c2b8d1f5eb1a3968c72">
+            <div class="showname">
+              <span class="show_title">lenovo/联想</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10025">
+            <img width="100" height="40" src="./sh测试站_files/791f0fe5134d278bb6bb9f9f280ab0cf.jpg" alt="791f0fe5134d278bb6bb9f9f280ab0cf">
+            <div class="showname">
+              <span class="show_title">佰斯特/POUSTO </span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10041">
+            <img width="100" height="40" src="./sh测试站_files/9c0be59dd68fb7259e040adda0a0c11f.jpg" alt="9c0be59dd68fb7259e040adda0a0c11f">
+            <div class="showname">
+              <span class="show_title">佰斯特/POUSTO</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10063">
+            <img width="100" height="40" src="http://10.212.139.83:4000/">
+            <div class="showname">
+              <span class="show_title">立白</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10026">
+            <img width="100" height="40" src="./sh测试站_files/e368b65927485ad36e35fb25bbada6b1.jpg" alt="E368b65927485ad36e35fb25bbada6b1">
+            <div class="showname">
+              <span class="show_title">百兴/BX </span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10020">
+            <img width="100" height="40" src="./sh测试站_files/126288f33e8cfc310de886707077d114.jpg" alt="126288f33e8cfc310de886707077d114">
+            <div class="showname">
+              <span class="show_title">Dell/戴尔</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10021">
+            <img width="100" height="40" src="./sh测试站_files/55750914d7ee5e91bfd4d3b1fa599dcf.jpg" alt="55750914d7ee5e91bfd4d3b1fa599dcf">
+            <div class="showname">
+              <span class="show_title">道达尔</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10022">
+            <img width="100" height="40" src="./sh测试站_files/9be77740326b30cf04e605be617b5586.jpg" alt="9be77740326b30cf04e605be617b5586">
+            <div class="showname">
+              <span class="show_title">丹佛斯百福马/Performe</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10064">
+            <img width="100" height="40" src="http://10.212.139.83:4000/">
+            <div class="showname">
+              <span class="show_title">亮碟</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10065">
+            <img width="100" height="40" src="./sh测试站_files/7a3df48dfe1f0ef9c9f061a3bdd32480.jpg" alt="7a3df48dfe1f0ef9c9f061a3bdd32480">
+            <div class="showname">
+              <span class="show_title">花王</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10066">
+            <img width="100" height="40" src="./sh测试站_files/b2ac9e0e209f500a2e1bd32170635204.jpg" alt="B2ac9e0e209f500a2e1bd32170635204">
+            <div class="showname">
+              <span class="show_title">优玛仕</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10067">
+            <img width="100" height="40" src="./sh测试站_files/98b959e974ed2c9b5c58e4bfbd645dba.jpg" alt="98b959e974ed2c9b5c58e4bfbd645dba">
+            <div class="showname">
+              <span class="show_title">齐心</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10068">
+            <img width="100" height="40" src="./sh测试站_files/87cc51668d5732d614c8e79d76b3bfee.jpg" alt="87cc51668d5732d614c8e79d76b3bfee">
+            <div class="showname">
+              <span class="show_title">明基</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10069">
+            <img width="100" height="40" src="./sh测试站_files/cd35b67dc83c5b7fc3ed1aa638e3448f.jpg" alt="Cd35b67dc83c5b7fc3ed1aa638e3448f">
+            <div class="showname">
+              <span class="show_title">Lenovo</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10023">
+            <img width="100" height="40" src="./sh测试站_files/03c208047be6843d2b5cf61c2c45ced3.jpg" alt="03c208047be6843d2b5cf61c2c45ced3">
+            <div class="showname">
+              <span class="show_title">长城</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10060">
+            <img width="100" height="40" src="./sh测试站_files/7b21099647bf78c83042c634e237f6a5.png" alt="7b21099647bf78c83042c634e237f6a5">
+            <div class="showname">
+              <span class="show_title">brand1</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10061">
+            <img width="100" height="40" src="./sh测试站_files/98b959e974ed2c9b5c58e4bfbd645dba(1).jpg" alt="98b959e974ed2c9b5c58e4bfbd645dba">
+            <div class="showname">
+              <span class="show_title">Aladdin/阿拉丁</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+        <div class="brand_box">
+        <a target="_blank" href1="http://10.212.139.83:4000/search.html?b=10062">
+            <img width="100" height="40" src="http://10.212.139.83:4000/">
+            <div class="showname">
+              <span class="show_title"> TCI/梯希爱</span>
+              <span class="show_brand">品牌馆</span>
+              <div class="show_btn">
+                <span class="show_enter">点击进入</span>
+              </div>
+            </div>
+</a>        </div>
+    </div>
+    <!--品牌中心结束-->
+  </div></div>
+  <div><div class="content_c">
+  <a href1="javacript:void(0);" class="action_pic">
+    </a><a target="_blank" href1="https://www.baidu.com/"><img src="./sh测试站_files/b7a1c630fe5896d55b26170c48bf255d.jpg" alt="B7a1c630fe5896d55b26170c48bf255d"></a>
+
+</div></div>
+  <div>
+    <div class="content_c">
+      <!--电脑数码开始-->
+          <div class="pro_kinds  pic_lv1_1">
+
+            <div class="kinds_left fl">
+
+              <a href1="javacript:void(0);">
+                <img width="187" height="353" src="./sh测试站_files/848234d98b65dc6996f53037dc41508e.jpg" alt="848234d98b65dc6996f53037dc41508e">
+              </a>
+            </div>
+            <div class="kinds_right fl ">
+              <ul>
+                        <li>
+                          <div class="kind_l fl">
+                            <h4>投影仪</h4>
+                            <a width="104" height="78" class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10024.html">点击查看</a>
+                          </div>
+                          <div class="kind_r fr">
+                            <a class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10024.html"><img width="104" height="78" src="./sh测试站_files/55750914d7ee5e91bfd4d3b1fa599dcf(1).jpg" alt="55750914d7ee5e91bfd4d3b1fa599dcf"></a>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="kind_l fl">
+                            <h4>便携式计算机</h4>
+                            <a width="104" height="78" class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10006.html">点击查看</a>
+                          </div>
+                          <div class="kind_r fr">
+                            <a class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10006.html"><img width="104" height="78" src="./sh测试站_files/7730e830a193bc70ebcd204979a5303c.jpg" alt="7730e830a193bc70ebcd204979a5303c"></a>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="kind_l fl">
+                            <h4>考勤机</h4>
+                            <a width="104" height="78" class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10023.html">点击查看</a>
+                          </div>
+                          <div class="kind_r fr">
+                            <a class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10023.html"><img width="104" height="78" src="./sh测试站_files/64c3107e5e8aa0956ab46d9c620e23ca.jpg" alt="64c3107e5e8aa0956ab46d9c620e23ca"></a>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="kind_l fl">
+                            <h4>台式计算机</h4>
+                            <a width="104" height="78" class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10007.html">点击查看</a>
+                          </div>
+                          <div class="kind_r fr">
+                            <a class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10007.html"><img width="104" height="78" src="./sh测试站_files/848234d98b65dc6996f53037dc41508e(1).jpg" alt="848234d98b65dc6996f53037dc41508e"></a>
+                          </div>
+                        </li>
+              </ul>
+              <div class="primary_pp fl">
+                  <a class="primary_box" target="_blank" href1="http://10.212.139.83:4000/search.html?b=10002&amp;c=10023%2C10022%2C10024%2C10006%2C10007%2C10008%2C10009">
+                    <img width="87" height="53" src="./sh测试站_files/c7b479acc2159c2b8d1f5eb1a3968c72.jpg" alt="C7b479acc2159c2b8d1f5eb1a3968c72">
+</a>              </div>
+            </div>
+          </div>
+          <div class="pro_kinds  pic_lv1_2">
+
+            <div class="kinds_left fl">
+
+              <a href1="javacript:void(0);">
+                <img width="187" height="353" src="./sh测试站_files/03c208047be6843d2b5cf61c2c45ced3(1).jpg" alt="03c208047be6843d2b5cf61c2c45ced3">
+              </a>
+            </div>
+            <div class="kinds_right fl ">
+              <ul>
+                        <li>
+                          <div class="kind_l fl">
+                            <h4>手用丝锥</h4>
+                            <a width="104" height="78" class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10060.html">点击查看</a>
+                          </div>
+                          <div class="kind_r fr">
+                            <a class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10060.html"><img width="104" height="78" src="./sh测试站_files/a8c2dedea206ce426410cab803bb4d66.jpg" alt="A8c2dedea206ce426410cab803bb4d66"></a>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="kind_l fl">
+                            <h4>螺丝刀</h4>
+                            <a width="104" height="78" class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10068.html">点击查看</a>
+                          </div>
+                          <div class="kind_r fr">
+                            <a class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10068.html"><img width="104" height="78" src="./sh测试站_files/e93caca0fa9c6a7bce534c373d44a639.jpg" alt="E93caca0fa9c6a7bce534c373d44a639"></a>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="kind_l fl">
+                            <h4>OSG 直槽螺纹丝锥</h4>
+                            <a width="104" height="78" class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10061.html">点击查看</a>
+                          </div>
+                          <div class="kind_r fr">
+                            <a class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10061.html"><img width="104" height="78" src="./sh测试站_files/003545e02e059b04e02e5edcd8d6602d.jpg" alt="003545e02e059b04e02e5edcd8d6602d"></a>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="kind_l fl">
+                            <h4>伯爵 直槽丝锥</h4>
+                            <a width="104" height="78" class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10062.html">点击查看</a>
+                          </div>
+                          <div class="kind_r fr">
+                            <a class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10062.html"><img width="104" height="78" src="./sh测试站_files/1753e3216a919e55c2b4a1b72651fbc4.jpg" alt="1753e3216a919e55c2b4a1b72651fbc4"></a>
+                          </div>
+                        </li>
+              </ul>
+              <div class="primary_pp fl">
+                  <a class="primary_box" target="_blank" href1="http://10.212.139.83:4000/search.html?b=10020&amp;c=10060%2C10068%2C10061%2C10062%2C10063">
+                    <img width="87" height="53" src="./sh测试站_files/126288f33e8cfc310de886707077d114.jpg" alt="126288f33e8cfc310de886707077d114">
+</a>                  <a class="primary_box" target="_blank" href1="http://10.212.139.83:4000/search.html?b=10021&amp;c=10060%2C10068%2C10061%2C10062%2C10063">
+                    <img width="87" height="53" src="./sh测试站_files/55750914d7ee5e91bfd4d3b1fa599dcf.jpg" alt="55750914d7ee5e91bfd4d3b1fa599dcf">
+</a>                  <a class="primary_box" target="_blank" href1="http://10.212.139.83:4000/search.html?b=10022&amp;c=10060%2C10068%2C10061%2C10062%2C10063">
+                    <img width="87" height="53" src="./sh测试站_files/9be77740326b30cf04e605be617b5586.jpg" alt="9be77740326b30cf04e605be617b5586">
+</a>              </div>
+            </div>
+          </div>
+      <!--电脑数码结束-->
+    </div>
+
+    <div class="content_c">
+      <!--电脑数码开始-->
+          <div class="pro_kinds  pic_lv2_1">
+
+            <div class="kinds_left fl">
+
+              <a href1="javacript:void(0);">
+                <img width="187" height="353" src="./sh测试站_files/00755760738cf7367325940db94f6d06.jpg" alt="00755760738cf7367325940db94f6d06">
+              </a>
+            </div>
+            <div class="kinds_right fl ">
+              <ul>
+                        <li>
+                          <div class="kind_l fl">
+                            <h4>洗碗机用清洁剂</h4>
+                            <a width="104" height="78" class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10064.html">点击查看</a>
+                          </div>
+                          <div class="kind_r fr">
+                            <a class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10064.html"><img width="104" height="78" src="./sh测试站_files/05529aacb6a65a01fca9b3880b4aa74a.jpg" alt="05529aacb6a65a01fca9b3880b4aa74a"></a>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="kind_l fl">
+                            <h4>圆柱形铣刀</h4>
+                            <a width="104" height="78" class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10065.html">点击查看</a>
+                          </div>
+                          <div class="kind_r fr">
+                            <a class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10065.html"><img width="104" height="78" src="./sh测试站_files/896a4fa2d1c669b50945ec07294e690a.jpg" alt="896a4fa2d1c669b50945ec07294e690a"></a>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="kind_l fl">
+                            <h4>三菱铣刀片</h4>
+                            <a width="104" height="78" class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10066.html">点击查看</a>
+                          </div>
+                          <div class="kind_r fr">
+                            <a class="look" target="_blank" href1="http://10.212.139.83:4000/channel/10066.html"><img width="104" height="78" src="./sh测试站_files/4e908c238b4b7159fda577efefd739d0.jpg" alt="4e908c238b4b7159fda577efefd739d0"></a>
+                          </div>
+                        </li>
+              </ul>
+              <div class="primary_pp fl">
+                  <a class="primary_box" target="_blank" href1="http://10.212.139.83:4000/search.html?b=10025&amp;c=10064%2C10065%2C10066">
+                    <img width="87" height="53" src="./sh测试站_files/791f0fe5134d278bb6bb9f9f280ab0cf.jpg" alt="791f0fe5134d278bb6bb9f9f280ab0cf">
+</a>              </div>
+            </div>
+          </div>
+      <!--电脑数码结束-->
+    </div>
+</div>
+</div>
+
+
+    <!-- 底部 -->
+      <!-- 服务代码开始 -->
+  <div class="wrapper">
+      <div><!--服务代码开始-->
+<div class="services content_c">
+  <div class="services_l fl">
+    <div class="ser_bz zheng">正品保证</div>
+    <div class="ser_bz hui">优惠价格</div>
+    <div class="ser_bz xiang">星级服务</div>
+  </div>
+  <ul class="services_r fl">
+    <li>
+      <h1 class="czzn">新手指南</h1>
+      <p><a href1="http://10.212.139.83:4000/#">用户注册</a></p>
+      <p><a href1="http://10.212.139.83:4000/#">用户登录</a></p>
+      <p><a href1="http://10.212.139.83:4000/#">常见问题</a></p>
+    </li>
+    <li>
+      <h1 class="zffs">支付方式</h1>
+      <p><a href1="http://10.212.139.83:4000/#">货到付款</a></p>
+      <p><a href1="http://10.212.139.83:4000/#">国库集中支付</a></p>
+      <p><a href1="http://10.212.139.83:4000/#">在线支付</a></p>
+    </li>
+    <li class="bdnone">
+      <h1 class="fwzc">服务支持</h1>
+      <p><a href1="http://10.212.139.83:4000/#">操作手册</a></p>
+      <p><a href1="http://10.212.139.83:4000/#">意见反馈</a></p>
+      <p><a href1="http://10.212.139.83:4000/#">监督举报</a></p>
+    </li>
+    <li class="zxkf">
+      <p><a href1="http://10.212.139.83:4000/#"><img src="./sh测试站_files/kefu-bda109bc05cdb411c0dcb8635eec2e11.png" alt="Kefu"></a></p>
+      <p style="padding-left:48px;"><a href1="http://10.212.139.83:4000/#"><img src="./sh测试站_files/phone-f54c4f82b58761576ad57b8452a5c39f.png" alt="Phone"></a></p>
+    </li>
+  </ul>
+</div>
+<!--服务代码结束--></div>
+  </div>
+  <!-- 服务代码结束 -->
+
+  <!--fotter代码开始-->
+  <div class="fotter">
+  <div class="fotter_nav">
+    <span><a href1="http://10.212.139.83:4000/#">神华采购电子商务平台</a></span>|
+    <span><a href1="http://10.212.139.83:4000/articles.html?category_id=10080">关于我们</a></span>|
+
+    <span><a href1="http://10.212.139.83:4000/articles.html?category_id=10081">版权说明</a></span>|
+    <span><a href1="http://10.212.139.83:4000/#">电子邮箱</a></span>|
+    <span><a href1="http://10.212.139.83:4000/#">法律条款</a></span>|
+    <span><a href1="http://10.212.139.83:4000/feedbacks.html">意见反馈</a></span>|
+    <span><a href1="http://www.shenhuagroup.com.cn/" ,="" target="_blank">友情链接</a></span>
+  </div>
+  <p><span>业务咨询：神华采购电子商务平台</span><span class="ml20">京ICP备:10032362号</span></p>
+  <p><span>技术支持：北京阳光公采科技有限公司</span><span class="ml20">电话：400-965-5696</span></p>
+</div>
+  <!--fotter代码-->
+
+
+
+
+<script>
+    $("body").ichat({
+        placement: 'right',
+        top: 27,
+         title: '在线客服',
+        color: 'black',
+        trigger: 'click',
+        items: [{"type":"qq","title":"信息","trigger":"click","open":true,"items":[{"title":"张三","qq":"16429179992","image":"/assets/qq.png"},{"title":"8888888888","tel":"8888888888","image":"/assets/tel.png"}]},{"type":"qq","title":"智能","trigger":"click","open":true,"items":[{"title":"神华","qq":"16429","image":"/assets/qq.png"},{"title":"888888888","tel":"888888888","image":"/assets/tel.png"},{"title":"1111","qq":"2423806988","image":"/assets/qq.png"},{"title":"1111111","tel":"1111111","image":"/assets/tel.png"},{"title":"王88","qq":"8521","image":"/assets/qq.png"},{"title":"888888888","tel":"888888888","image":"/assets/tel.png"},{"title":"李四","qq":"123456789","image":"/assets/qq.png"},{"title":"88888888","tel":"88888888","image":"/assets/tel.png"}]},{"type":"qq","title":"神华神华","trigger":"click","open":true,"items":[{"title":"赵四","qq":"95215","image":"/assets/qq.png"},{"title":"18306299514","tel":"18306299514","image":"/assets/tel.png"}]}]
+    });
+</script><!-- ichat区域 --><div id="ichatBody" class="ichat-body ichat-pull-right" style="top:27%;">  <!-- ichat按钮 -->  <div id="ichatButton" class="ichat-button ichat-float-left ichat-color-black">    <b id="ichatButtonName">在线客服</b>  </div>  <!-- ichat内容 -->  <div id="ichatContent" class="ichat-content ichat-float-left">  <div>  <div data-ichat-toggle="ichatItem0" class="ichat-title ichat-cursor">信息</div>  <div id="ichatItem0" class="ichat-list"><ul class="ichat-list-ul"><li><a href1="http://wpa.qq.com/msgrd?v=3&amp;uin=16429179992&amp;site=qq&amp;menu=yes" style="background-image: url(&#39;/assets/qq.png&#39;);" target="_blank">张三</a></li><li><a href1="http://wpa.qq.com/msgrd?v=3&amp;uin=undefined&amp;site=qq&amp;menu=yes" style="background-image: url(&#39;/assets/tel.png&#39;);" target="_blank">8888888888</a></li></ul></div></div><div>  <div data-ichat-toggle="ichatItem1" class="ichat-title ichat-cursor">智能</div>  <div id="ichatItem1" class="ichat-list"><ul class="ichat-list-ul"><li><a href1="http://wpa.qq.com/msgrd?v=3&amp;uin=16429&amp;site=qq&amp;menu=yes" style="background-image: url(&#39;/assets/qq.png&#39;);" target="_blank">神华</a></li><li><a href1="http://wpa.qq.com/msgrd?v=3&amp;uin=undefined&amp;site=qq&amp;menu=yes" style="background-image: url(&#39;/assets/tel.png&#39;);" target="_blank">888888888</a></li><li><a href1="http://wpa.qq.com/msgrd?v=3&amp;uin=2423806988&amp;site=qq&amp;menu=yes" style="background-image: url(&#39;/assets/qq.png&#39;);" target="_blank">1111</a></li><li><a href1="http://wpa.qq.com/msgrd?v=3&amp;uin=undefined&amp;site=qq&amp;menu=yes" style="background-image: url(&#39;/assets/tel.png&#39;);" target="_blank">1111111</a></li><li><a href1="http://wpa.qq.com/msgrd?v=3&amp;uin=8521&amp;site=qq&amp;menu=yes" style="background-image: url(&#39;/assets/qq.png&#39;);" target="_blank">王88</a></li><li><a href1="http://wpa.qq.com/msgrd?v=3&amp;uin=undefined&amp;site=qq&amp;menu=yes" style="background-image: url(&#39;/assets/tel.png&#39;);" target="_blank">888888888</a></li><li><a href1="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes" style="background-image: url(&#39;/assets/qq.png&#39;);" target="_blank">李四</a></li><li><a href1="http://wpa.qq.com/msgrd?v=3&amp;uin=undefined&amp;site=qq&amp;menu=yes" style="background-image: url(&#39;/assets/tel.png&#39;);" target="_blank">88888888</a></li></ul></div></div><div>  <div data-ichat-toggle="ichatItem2" class="ichat-title ichat-cursor">神华神华</div>  <div id="ichatItem2" class="ichat-list"><ul class="ichat-list-ul"><li><a href1="http://wpa.qq.com/msgrd?v=3&amp;uin=95215&amp;site=qq&amp;menu=yes" style="background-image: url(&#39;/assets/qq.png&#39;);" target="_blank">赵四</a></li><li><a href1="http://wpa.qq.com/msgrd?v=3&amp;uin=undefined&amp;site=qq&amp;menu=yes" style="background-image: url(&#39;/assets/tel.png&#39;);" target="_blank">18306299514</a></li></ul></div></div></div></div>
+<div style="display:none;" class="jqPreload0">sdsdssdsd</div></body><div></div></html>
